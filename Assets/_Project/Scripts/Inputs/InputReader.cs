@@ -43,7 +43,6 @@ namespace Platformer
 
         public void OnFire(InputAction.CallbackContext context)
         {
-            Debug.LogWarning("I'm not sure about Fire yet.");
             Fire.Invoke();
         }
 
@@ -54,7 +53,7 @@ namespace Platformer
 
         public void OnRun(InputAction.CallbackContext context)
         {
-            Debug.LogWarning("I'm not sure about Run yet. Are we even using a run ?");
+            // FIXME : On va mettre du run ou pas ? Jsp mais pour l'instant on le laisse
             Run.Invoke();
         }
 

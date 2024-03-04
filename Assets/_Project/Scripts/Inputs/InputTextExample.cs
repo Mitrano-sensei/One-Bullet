@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -62,23 +63,32 @@ namespace Platformer
                 });
             };
 
-            inputReader.Look += (v, b) =>
+            inputReader.Look += (value, isMouse) =>
             {
-                _look = v;
-                _isMouse = b;
+                _isMouse = isMouse;
+
+                if (!isMouse) _look = value;
+                else _look = GetMousePosition();
+
                 UpdateText();
             };
-
-
         }
 
+        private Vector2 GetMousePosition()
+        {
+            return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
 
-        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(Vector3.zero, _look);
+            
+        }
 
-        
         private void UpdateText()
         {
-            textMeshPro.text = $"Is Moving : {_movement}\r\nIs Aiming Enabled : {_aiming}\r\nShooting : {_shooting}\r\nIs Jumping : {_jumping}\r\nLook : {_look}, isMouse {_isMouse}";
+            textMeshPro.text = $"Is Moving : {_movement}\r\nIs Aiming Enabled : {_aiming}\r\nShooting : {_shooting}\r\nIs Jumping : {_jumping}\r\nLook : {_look}, isMouse {_isMouse}\r\n\n\n (Try using a Controller!)";
         }
     }
 }
