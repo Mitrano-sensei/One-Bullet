@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Platformer
 {
+    [RequireComponent(typeof(Collider2D))]
     public class DamageableExample : MonoBehaviour, IDamageable
     {
         public void TakeDamage()
