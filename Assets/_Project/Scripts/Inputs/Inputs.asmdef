@@ -1,11 +1,9 @@
 {
-    "name": "Platformer",
-    "rootNamespace": "Platformer",
+    "name": "Inputs",
+    "rootNamespace": "",
     "references": [
-        "GUID:37ba34f99fd2a3d409abaf8e538366c9",
-        "GUID:f8aa12b930f68444c80a59be3afd5bcc",
-        "GUID:43955da3bc97fbb46af06b285e26dd13",
-        "GUID:bf9ffaca82417f64f812bb8d659d66e9"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
