@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Platformer
 {
@@ -9,11 +9,16 @@ namespace Platformer
     public class SimpleEnemy : MonoBehaviour, IDamageable, IHurtful
     {
         [Header("References")]
+        [ReadOnly][SerializeField] private string note = "References can be left to null! :)";
         [SerializeField] private Animator _animator;
         [SerializeField] private Collider2D _collider2D;
 
+        [Header("Events")]
+        [SerializeField] private UnityEvent _onDeathEvent = new();
+
         [Header("Misc")]
         [SerializeField] private string _deathAnimationName = "Death";
+        [SerializeField] private bool _debug = true;
 
         void Start()
         {
@@ -27,13 +32,17 @@ namespace Platformer
 
         public void TakeDamage()
         {
-            Debug.Log("Simple enemy died :c From : " + gameObject.name);
+            // Logs something for example
+            if (_debug) Debug.Log("Simple enemy died :c From : " + gameObject.name);
 
             // Disable collider
             _collider2D.enabled = false;
 
             // Play death animation
             _animator.Play(_deathAnimationName);
+            
+            // Invoke event
+            _onDeathEvent?.Invoke();
 
             // Disable game object after animation ends
             StartCoroutine(DisableGameObjectAfterAnimation());
