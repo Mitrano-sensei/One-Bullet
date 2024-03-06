@@ -1,11 +1,15 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
 namespace Platformer
 {
+    /**
+     * <summary>
+     * Class that handles camera shake.
+     * </summary>
+     */
+    [RequireComponent(typeof(CinemachineVirtualCamera), typeof(CinemachineBasicMultiChannelPerlin))]
     public class CameraShake : MonoBehaviour
     {
         #region References
@@ -57,11 +61,6 @@ namespace Platformer
             if (_shakeTimer.IsFinished)
             {
                 StopShake();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ShakeCamera();
             }
         }
     }

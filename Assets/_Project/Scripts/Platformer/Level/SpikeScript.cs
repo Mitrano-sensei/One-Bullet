@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Platformer
 {
+    /**
+     * A spike is only an object that will hurt things that touch it.
+     */
     public class SpikeScript : MonoBehaviour, IHurtful
     {
         public void Hurt(IDamageable damageable)

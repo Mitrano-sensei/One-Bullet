@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace Platformer
 {
+    /**
+     * Example of a hurtful object (for demo).
+     * TODO : Remove this class
+     */
     [RequireComponent(typeof(Collider2D))]
     public class HurtExample : MonoBehaviour, IHurtful
     {

@@ -5,6 +5,12 @@ using UnityEngine.Events;
 
 namespace Platformer
 {
+    /**
+     * <summary>
+     * Simple enemy class.
+     * The enemy can take damage and hurt other objects, but won't move at all (except from rigidbody if it has one).
+     * </summary>
+     */
     [RequireComponent(typeof(Collider2D))]
     public class SimpleEnemy : MonoBehaviour, IDamageable, IHurtful
     {

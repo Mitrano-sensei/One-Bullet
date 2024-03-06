@@ -5,6 +5,10 @@ using static PlayerInputActions;
 
 namespace Platformer
 {
+    /**
+     * This is a ScriptableObject that will be used to read the inputs from the player.
+     * It holds the differnet events that can be triggered by the player inputs.
+     */
     [CreateAssetMenu(fileName = "InputReader", menuName = "OneBullet/Inputs/InputReader")]
     public class InputReader : ScriptableObject, IPlayerActions
     {
