@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Platformer
 {
+    /**
+     * Demo script to show how to use the InputReader
+     */
     public class InputTextExample : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI textMeshPro;
