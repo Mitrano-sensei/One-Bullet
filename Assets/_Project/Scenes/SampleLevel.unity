@@ -154,16 +154,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &90951847 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4653022297922652906, guid: b06b3081f20ae4241b02c763a7e790a1, type: 3}
-  m_PrefabInstance: {fileID: 6573030550320703823}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &225347423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 402275695392269307, guid: b06b3081f20ae4241b02c763a7e790a1, type: 3}
-  m_PrefabInstance: {fileID: 6573030550320703823}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291908834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5088638924582266288, guid: 6e1888c8fef0116499d2d1fe8c9566df, type: 3}
@@ -310,6 +300,7 @@ GameObject:
   - component: {fileID: 462206108}
   - component: {fileID: 462206109}
   - component: {fileID: 462206110}
+  - component: {fileID: 462206111}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -355,7 +346,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 7.73
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -386,6 +377,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shakeIntensity: 7
   _shakeTime: 0.2
+--- !u!114 &462206111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462206107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 0}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &531039846
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +764,7 @@ GameObject:
   - component: {fileID: 1022725221}
   - component: {fileID: 1022725223}
   - component: {fileID: 1022725222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9583,7 +9591,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.73
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -10393,7 +10401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915209656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.93, y: 32.18, z: 0}
+  m_LocalPosition: {x: -37.72, y: 32.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10585,7 +10593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964895319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.39, y: 30.62, z: 0}
+  m_LocalPosition: {x: -21.51, y: 30.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10764,11 +10772,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2293262472179117110, guid: 2d4945c39dce5a84b8fa801681737e6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.029743
+      value: -37.81
       objectReference: {fileID: 0}
     - target: {fileID: 2293262472179117110, guid: 2d4945c39dce5a84b8fa801681737e6d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.423859
+      value: 30.05
       objectReference: {fileID: 0}
     - target: {fileID: 2293262472179117110, guid: 2d4945c39dce5a84b8fa801681737e6d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11065,7 +11073,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6573030550320703825}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -11083,7 +11091,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &6573030550320703829
 Animator:
   serializedVersion: 5
@@ -11114,50 +11122,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6573030550320703825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9afb2470bc1cde45add0b53c250f7c0, type: 3}
+  m_Script: {fileID: 11500000, guid: a8736899456c278459a4e52858368488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  note: References can be left to null! :)
-  _animator: {fileID: 0}
-  _collider2D: {fileID: 0}
-  _onDeathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 90951847}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 225347423}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 462206110}
-        m_TargetAssemblyTypeName: Platformer.CameraShake, Platformer
-        m_MethodName: ShakeCamera
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 7
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _deathAnimationName: Dead
-  _debug: 1
+  _playerInput: {fileID: 11400000, guid: abcf95311d389144ead6d091609c3604, type: 2}
+  _moveSpeed: 5
+  _jumpForce: 5
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  _whatIsWall:
+    serializedVersion: 2
+    m_Bits: 64
+  _groundCheckDistance: 1.38
+  _wallCheckDistance: 1.11
+  _bufferJumpTime: 0.2
+  _cayoteJumpTime: 0.2
