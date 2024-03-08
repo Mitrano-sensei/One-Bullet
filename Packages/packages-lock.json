@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.kylewbanks.scenerefattribute": {
+      "version": "git+https://github.com/KyleBanks/scene-ref-attribute",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "777ecaee68be9a381f0da0a982ebc0dafb28374a"
+    },
+    "com.madsbangh.easybuttons": {
+      "version": "https://github.com/madsbangh/EasyButtons.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "73d2383899210da808a1b27329cdaa8000de557b"
+    },
     "com.mitrano.statemachine": {
       "version": "file:Finite-State-Machine",
       "depth": 0,

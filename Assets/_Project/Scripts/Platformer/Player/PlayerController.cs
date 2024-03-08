@@ -1,4 +1,6 @@
+using EasyButtons;
 using UnityEngine;
+using Utilities;
 
 namespace Platformer
 {
@@ -41,6 +43,16 @@ namespace Platformer
         private float _cayoteJumpCounter;
         private bool _canHaveCayoteJump;
 
+        [Header("Weapon")]
+        [SerializeField] private Transform _weaponCenter;
+        [SerializeField] private GameObject _weapon;
+        [SerializeField] private GameObject _bulletPrefab;
+        [SerializeField] private GameObject _aimIndicator;
+
+        [SerializeField] private float _weaponOffset;
+
+        private WeaponController _weaponController;
+
 
         // Start is called before the first frame update
         void Start()
@@ -57,6 +69,8 @@ namespace Platformer
             {
                 JumpButton();
             };
+
+            _weaponController = new WeaponController(_weaponCenter, _weapon, _bulletPrefab, _playerInput, _weaponOffset, _aimIndicator);
         }
 
         // Update is called once per frame
@@ -174,6 +188,8 @@ namespace Platformer
             Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - _groundCheckDistance));
             Gizmos.DrawLine(transform.position, new Vector2(transform.position.x + (_wallCheckDistance * _facingDirection), transform.position.y));
 
+            Gizmos.color = Color.red;
+            if (_weaponCenter != null) Gizmos.DrawWireSphere(_weaponCenter.position, _weaponOffset);
         }
 
         public void TakeDamage()
@@ -181,6 +197,17 @@ namespace Platformer
             // TODO : Call the animation, shake screen etc...
             gameObject.SetActive(false);
         }
-    }
 
+        [Button]
+        private void UpdateWeaponController()
+        {
+            if (!Application.isPlaying) return;
+
+            _weaponController.WeaponCenter = _weaponCenter;
+            _weaponController.Weapon = _weapon;
+            _weaponController.BulletPrefab = _bulletPrefab;
+            _weaponController.WeaponOffset = _weaponOffset;
+
+        }
+    }
 }

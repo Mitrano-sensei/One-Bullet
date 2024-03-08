@@ -17,17 +17,26 @@ namespace MyTools
         [MenuItem("Tools/Setup/Folders And Imports/Create Default Folders")]
         public static void CreateDefaultFolders()
         {
-            Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "Scripts/ScriptableObjects", "Scripts/UI", "Scenes", "Sounds");
+            Folders.CreateDefault("_Project", "Animation", "Art", "Materials", "Prefabs", "ScriptableObjects", "Scenes", "Sounds");
             Refresh();
         }
 
-        [MenuItem("Tools/Setup/Folders And Imports/Import My Favorite Assets")]
-        public static void ImportMyFavoriteAssets()
+        [MenuItem("Tools/Setup/Folders And Imports/Import DOTween")]
+        public static void ImportDOTween()
         {
             Assets.ImportAsset(
                 "DOTween HOTween v2.unitypackage",
                 "Demigiant/Editor ExtensionsAnimation"
                 );
+        }
+
+        [MenuItem("Tools/Setup/Folders And Imports/Import Easy Buttons")]
+        public static void ImportEasyButtons()
+        {
+            Packages.InstallPackages(new[]
+            {
+                "https://github.com/madsbangh/EasyButtons.git#upm"
+            });
         }
 
         [MenuItem("Tools/Setup/Folders And Imports/Install Netcode for GameObjects")]
@@ -53,7 +62,7 @@ namespace MyTools
             Packages.InstallPackages(new[] {
                 "git+https://github.com/KyleBanks/scene-ref-attribute",
                 "git+https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git",
-                "git+https://github.com/madsbangh/EasyButtons.git",
+                "https://github.com/madsbangh/EasyButtons.git#upm",
                 "git+https://github.com/KyleBanks/scene-ref-attribute.git",
                 "git+https://github.com/Mitrano-sensei/Finite-State-Machine.git",
                 "git+https://github.com/Mitrano-sensei/Unity-Utilities.git"

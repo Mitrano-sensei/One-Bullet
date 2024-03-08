@@ -316,6 +316,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""420e51ee-dd72-4fec-af6c-1befb70d8605"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Enable Aiming Mode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e450180a-6fb2-4d82-8929-fb205b518df0"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
