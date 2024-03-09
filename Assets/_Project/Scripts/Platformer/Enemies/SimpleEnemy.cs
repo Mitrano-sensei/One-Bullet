@@ -26,14 +26,10 @@ namespace Platformer
         [SerializeField] private string _deathAnimationName = "Death";
         [SerializeField] private bool _debug = true;
 
-        void Start()
+        protected virtual void Start()
         {
-            Debug.Log("Start");
-
             if (_collider2D == null) _collider2D = GetComponent<Collider2D>();
             if (_animator == null) _animator = GetComponent<Animator>();
-
-            if (_collider2D == null) Debug.LogError("Je ne comprend pas");
         }
 
         public void TakeDamage()

@@ -53,6 +53,9 @@ namespace Platformer
 
         private WeaponController _weaponController;
 
+        [Header("Misc")]
+        [SerializeField] private bool _isGodMode = false;
+
 
         // Start is called before the first frame update
         void Start()
@@ -194,6 +197,8 @@ namespace Platformer
 
         public void TakeDamage()
         {
+            if (_isGodMode) return;
+
             // TODO : Call the animation, shake screen etc...
             gameObject.SetActive(false);
         }
