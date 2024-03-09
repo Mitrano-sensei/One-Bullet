@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Platformer
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Animator))]
     public class PlayerController : MonoBehaviour, IDamageable
     {
         [Header("Reference")]
@@ -15,6 +15,7 @@ namespace Platformer
         private float _hInput;
         private float _vInput;
         private bool _readyToLand;
+        private Animator _animator;
 
         [Header("Collision info")]
 
@@ -46,7 +47,7 @@ namespace Platformer
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-
+            _animator = GetComponent<Animator>();
             _playerInput.Move += direction =>
             {
                 _hInput = direction.x;
@@ -64,6 +65,7 @@ namespace Platformer
         {
             FlipController();
             CollisionCheck();
+            AnimController();
 
             _bufferJumpCounter -= Time.deltaTime;
             _cayoteJumpCounter -= Time.deltaTime;
@@ -180,6 +182,16 @@ namespace Platformer
         {
             // TODO : Call the animation, shake screen etc...
             gameObject.SetActive(false);
+        }
+
+        /*
+         * Function for Animation controller
+         *
+         */
+        public void AnimController()
+        {
+            _animator.SetBool("isMoving", rb.velocity.x !=0);
+            _animator.SetBool("isGrounded", _isGrounded);
         }
     }
 
