@@ -15,8 +15,16 @@ namespace Platformer
         private float _hInput;
         private float _vInput;
         private bool _readyToLand;
+        public float accelerationTime = 0.1f; // Time taken to reach max speed
+        public float decelerationTime = 0.2f; // Time taken to stop from max speed
         private Animator _animator;
-
+        private float currentVelocityX = 0f;
+        private float targetVelocityX = 0f;
+        [Header("Move info")]
+        public float jumpStartTime = 2f;
+        private float jumpTime;
+        private bool isJumping = false;
+        
         [Header("Collision info")]
 
         //ground and wall detection stuffs
@@ -66,7 +74,6 @@ namespace Platformer
             FlipController();
             CollisionCheck();
             AnimController();
-
             _bufferJumpCounter -= Time.deltaTime;
             _cayoteJumpCounter -= Time.deltaTime;
 
@@ -102,13 +109,15 @@ namespace Platformer
             Move();
         }
 
-
         /*
          * Move Function
          */
         public void Move()
         {
-            rb.velocity = new Vector2(_moveSpeed * _hInput, rb.velocity.y);
+            targetVelocityX = _hInput * _moveSpeed;
+            currentVelocityX = Mathf.Lerp(currentVelocityX, targetVelocityX,
+                                Time.deltaTime * (_hInput == 0 ? 1 / decelerationTime : 1 / accelerationTime));
+            rb.velocity = new Vector2(currentVelocityX, rb.velocity.y);
         }
 
         /*
@@ -116,7 +125,32 @@ namespace Platformer
          */
         public void Jump()
         {
-            rb.velocity = new Vector2(rb.velocity.x, _jumpForce);
+            isJumping = true;
+            jumpTime = jumpStartTime;
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && _isGrounded)  
+            {
+                isJumping = true;
+                jumpTime = jumpStartTime;
+                rb.velocity = Vector2.up * _jumpForce;
+            }
+            if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && isJumping)
+            { 
+                if(jumpTime > 0)
+                {
+                    rb.velocity = Vector2.up * _jumpForce;
+                    jumpTime -= Time.deltaTime;
+                }
+                else
+                {
+                    isJumping = false;
+                }
+                
+            }
+            if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                isJumping = false;
+            }
+             
         }
 
         /*
@@ -127,7 +161,6 @@ namespace Platformer
             _facingDirection = _facingDirection * -1;
             _facingRight = !_facingRight;
             transform.Rotate(0, 180, 0);
-
         }
 
         private void FlipController()
@@ -190,7 +223,7 @@ namespace Platformer
          */
         public void AnimController()
         {
-            _animator.SetBool("isMoving", rb.velocity.x !=0);
+            _animator.SetBool("isMoving", (int)rb.velocity.x != 0);
             _animator.SetBool("isGrounded", _isGrounded);
         }
     }
